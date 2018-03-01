@@ -1,0 +1,12 @@
+[package]
+name = "casnet"
+version = "0.1.0"
+authors = ["Tim Caswell <tim@creationix.com>"]
+
+[dependencies]
+rust-crypto = "0.2"
+rand = "0.4"
+
+[profile.release]
+lto = true
+panic = 'abort'
