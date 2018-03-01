@@ -26,4 +26,13 @@ fn main() {
     let mut hash = [0u8; 32];
     Blake2b::blake2b(&mut hash, b"Hello", b"");
     println!("{:x}", Hex(&hash));
+
+    // Sign a message and verify.
+    let message = b"top secret";
+    // Sign a message using bob's secret key.
+    let sig = ed25519::signature(message, &bob.0);
+    println!("{:x}", Hex(&sig));
+    // Verify the message using bob's public key.
+    let verified = ed25519::verify(message, &bob.1, &sig);
+    println!("{:?}", verified);
 }
